@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Container, Navbar, Button, Card, Row, Col } from "react-bootstrap";
 import InputForm from "./Components/InputForm";
 import PredictionTable from "./Components/PredictionTable";
-import PredictionChart from "./Components/PredictionChart"; // Import PredictionChart
-import { trainModel, predict } from "./utils/mlUtils"; // Import mlUtils
+import PredictionChart from "./Components/PredictionChart";
+import { trainModel, predict } from "./utils/mlUtils";
 import "./Styles.css";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
     setData([
       ...data,
       {
-        input: data.length + 1, // Example x-axis data
+        input: data.length + 1,
         output: parseFloat(formData.totalStudents),
         ...formData,
       },
@@ -39,11 +39,11 @@ const App = () => {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#ECECEC", minHeight: "100vh", color: "white" }}>
       {/* Navbar */}
-       <Navbar bg="dark" variant="dark" style={{ backgroundColor: '#333' }}>
+      <Navbar bg="dark" variant="dark" className="header" style={{  minHeight: "100px", fontSize: '50px' }}>
         <Container>
-          <Navbar.Brand href="#">Course Section Forecasting</Navbar.Brand>
+          <Navbar.Brand href="#" className="mx-auto">Course Section Forecasting</Navbar.Brand>
         </Container>
       </Navbar>
 
@@ -53,7 +53,7 @@ const App = () => {
           {/* Form Section */}
           <Col md={4}>
             <Card className="shadow-sm mb-4">
-              <Card.Header className="bg-primary text-white text-center">
+              <Card.Header className="text-#333 text-center">
                 Add Enrollment Data
               </Card.Header>
               <Card.Body>
@@ -75,8 +75,8 @@ const App = () => {
               <>
                 {/* Prediction Table */}
                 <Card className="shadow-sm mb-4">
-                  <Card.Header className="bg-secondary text-white text-center">
-                    Predictions
+                  <Card.Header className=" text-#333 text-center">
+                    PREDICTIONS
                   </Card.Header>
                   <Card.Body>
                     <PredictionTable predictions={predictions} />
@@ -85,11 +85,11 @@ const App = () => {
 
                 {/* Prediction Chart */}
                 <Card className="shadow-sm">
-                  <Card.Header className="bg-secondary text-white text-center">
+                  <Card.Header className=" text-#333 text-center">
                     Predicted Enrollment and Sections by Course
                   </Card.Header>
                   <Card.Body>
-                    <PredictionChart predictions={predictions} /> {/* Use PredictionChart */}
+                    <PredictionChart predictions={predictions} />
                   </Card.Body>
                 </Card>
               </>
@@ -97,7 +97,7 @@ const App = () => {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 };
 
